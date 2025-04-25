@@ -58,3 +58,9 @@ A Django-based web application for managing and booking tickets for events and s
 8. Visit app:
    http://localhost:8000
  
+![Screenshot 2025-04-24 210435](https://github.com/user-attachments/assets/04f721e5-ac30-4c53-9f1f-6ae7fe7524f1)
+![Screenshot 2025-04-25 112608](https://github.com/user-attachments/assets/c545c7c2-8194-4126-8264-1493a385d424)
+![Screenshot 2025-04-25 094541](https://github.com/user-attachments/assets/bd13f11c-3851-4180-89db-d4e2ff7958f5)
+![Screenshot 2025-04-25 094532](https://github.com/user-attachments/assets/bd849a11-5ccd-46a7-9cf3-03dd1fe34c6b)
+![Screenshot 2025-04-25 094516](https://github.com/user-attachments/assets/c91ae8b1-6669-47cf-be21-3231d6cefcaa)
+
