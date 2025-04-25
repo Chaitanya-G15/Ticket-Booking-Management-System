@@ -32,8 +32,7 @@ A Django-based web application for managing and booking tickets for events and s
 
 ### ⚙️ Local Development
 
-1. **Clone the Repository**
-   ```bash
+1. Clone the Repository
    git clone https://github.com/Chaitanya-G15/Ticket-Booking-Management-System.git
    cd Ticket-Booking-Management-System
 2. Create virtual environment:
