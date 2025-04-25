@@ -1,0 +1,23 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    environment:
+      - DEBUG=1
+
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: ticketdb
+      POSTGRES_USER: ticketuser
+      POSTGRES_PASSWORD: ticketpass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

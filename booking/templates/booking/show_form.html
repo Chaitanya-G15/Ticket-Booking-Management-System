@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2 class="mb-4">{% if show %}Edit{% else %}Add{% endif %} Show</h2>
+  <form method="POST" class="card p-4 shadow-sm">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label>Title</label>
+      <input type="text" name="title" class="form-control" value="{{ show.title|default_if_none:'' }}" required>
+    </div>
+    <div class="mb-3">
+      <label>Description</label>
+      <textarea name="description" class="form-control">{{ show.description|default_if_none:'' }}</textarea>
+    </div>
+    <div class="mb-3">
+      <label>Date</label>
+      <input type="date" name="date" class="form-control" value="{{ show.date|default_if_none:'' }}" required>
+    </div>
+    <div class="mb-3">
+      <label>Time</label>
+      <input type="time" name="time" class="form-control" value="{{ show.time|default_if_none:'' }}" required>
+    </div>
+    <div class="mb-3">
+      <label>Available Seats</label>
+      <input type="number" name="available_seats" class="form-control" value="{{ show.available_seats|default_if_none:'' }}" required>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2 class="mb-4">Welcome{% if user.is_authenticated %}, {{ user.username }}{% endif %}!</h2>
+
+  <h4 class="mb-3">Browse Upcoming Shows</h4>
+
+  {% if shows %}
+    <div class="row">
+      {% for show in shows %}
+        <div class="col-md-6">
+          <div class="card mb-3 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">{{ show.title }}</h5>
+              <p class="card-text">{{ show.description }}</p>
+              <p><strong>Date:</strong> {{ show.date }} | <strong>Time:</strong> {{ show.time }}</p>
+              <p><strong>Seats Available:</strong> {{ show.available_seats }}</p>
+              <a href="{% url 'show-book' show.pk %}" class="btn btn-primary">Book Now</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No shows available right now.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2 class="mb-4">Your Bookings</h2>
+  {% if bookings %}
+    <ul class="list-group">
+      {% for booking in bookings %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+            <strong>{{ booking.show.title }}</strong><br>
+            {{ booking.seats_booked }} seat(s) × ₹{{ booking.show.ticket_price }}<br>
+            <strong>Total:</strong> ₹{{ booking.total_cost }}<br>
+            <br><small>Booked on {{ booking.booking_time|date:"M d, Y H:i" }}</small>
+          </div>
+          <div>
+            <form method="POST" action="{% url 'cancel-booking' booking.id %}">
+              {% csrf_token %}
+              <button class="btn btn-sm btn-danger">Cancel</button>
+            </form>
+            <form method="POST" action="{% url 'make-payment' booking.id %}" class="mt-1">
+              {% csrf_token %}
+              <button class="btn btn-sm btn-success">Make Payment</button>
+            </form>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No bookings yet.</p>
+  {% endif %}
+{% endblock %}

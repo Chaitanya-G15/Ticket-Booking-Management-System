@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2 class="mb-3">Book Show: {{ show.title }}</h2>
+  <form method="POST" class="card p-4 shadow-sm">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label>Available Seats: {{ show.available_seats }}</label>
+      <input type="number" name="seats" class="form-control" min="1" max="{{ show.available_seats }}" required>
+    </div>
+    <button type="submit" class="btn btn-success">Book Now</button>
+  </form>
+{% endblock %}

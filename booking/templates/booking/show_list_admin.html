@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2 class="mb-4">Manage Shows</h2>
+  <a href="{% url 'admin-show-add' %}" class="btn btn-success mb-3">+ Add New Show</a>
+
+  <div class="row">
+    {% for show in shows %}
+      <div class="col-md-6">
+        <div class="card mb-3 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">{{ show.title }}</h5>
+            <p class="card-text">{{ show.description }}</p>
+            <p><strong>Date:</strong> {{ show.date }} | <strong>Time:</strong> {{ show.time }}</p>
+            <p><strong>Seats:</strong> {{ show.available_seats }}</p>
+            <a href="{% url 'admin-show-edit' show.pk %}" class="btn btn-warning btn-sm">Edit</a>
+            <form method="POST" action="{% url 'admin-show-delete' show.pk %}" class="d-inline">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
