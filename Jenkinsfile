@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        PROJECT_DIR = 'Ticket-Booking-Management-System'
+    }
+
     stages {
         stage('Clone Repo') {
             steps {
@@ -10,29 +14,35 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker-compose build'
+                dir("${PROJECT_DIR}") {
+                    bat 'docker-compose build'
+                }
             }
         }
 
         stage('Run Migrations') {
             steps {
-                sh 'docker-compose run web python manage.py migrate'
+                dir("${PROJECT_DIR}") {
+                    bat 'docker-compose run web python manage.py migrate'
+                }
             }
         }
 
         stage('Start Server') {
             steps {
-                sh 'docker-compose up -d'
+                dir("${PROJECT_DIR}") {
+                    bat 'docker-compose up -d'
+                }
             }
         }
     }
 
     post {
         success {
-            echo '✅ Deployment Successful!'
+            echo "✅ Deployment successful!"
         }
         failure {
-            echo '❌ Deployment Failed!'
+            echo "❌ Deployment failed!"
         }
     }
 }
